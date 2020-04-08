@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardText, Badge, Container, Row, Col } from 'reactstrap';
+import { Card, CardTitle, CardText, Badge, Container, Row, Col, Spinner } from 'reactstrap';
 
 class Country extends Component {
     constructor(props) {
@@ -19,8 +19,10 @@ class Country extends Component {
     }
     render() {
         return (
-            <Container fluid={true} className="m-2 mb-5">
-                {this.state.loading ? <div><p>Loading...</p></div> :
+            <Container fluid={true} className="m-2 mb-5s">
+                {this.state.loading ? <div className="d-flex justify-content-center">
+                    <Spinner color="primary" style={{ width: '5rem', height: '5rem' }} />
+                </div> :
                     <Row>
                         <Col xs="12" sm="6" md="6" lg="3">
                             <Card body outline color="primary" className=" shadow m-3 bg-white rounded" >

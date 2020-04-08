@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardText, Badge, Progress, Container, Row, Col } from 'reactstrap';
+import { Card, CardTitle, CardText, Badge, Progress, Container, Row, Col, Spinner } from 'reactstrap';
 
 class States extends Component {
     constructor(props) {
@@ -22,7 +22,9 @@ class States extends Component {
         return (
             <Container fluid={true} className="m-2 mb-5 d-flex justify-content-center" >
                 <Row>
-                    {this.state.loading ? <div>Loading</div> : this.state.total.statewise.map((state) => {
+                    {this.state.loading ? <div>
+                        <Spinner color="primary" style={{ width: '5rem', height: '5rem' }} />
+                    </div> : this.state.total.statewise.map((state) => {
                         if (state.state !== "Total") {
                             const activePercent = (state.active / state.confirmed) * 100;
                             const recoveredPercent = (state.recovered / state.confirmed) * 100;

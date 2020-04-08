@@ -20,9 +20,10 @@ class States extends Component {
     render() {
 
         return (
+
             <Container fluid={true} className="m-2 mb-5 d-flex justify-content-center" >
                 <Row>
-                    {this.state.loading ? <div>
+                    {this.state.loading ? <div className="d-flex justify-content-center">
                         <Spinner color="primary" style={{ width: '5rem', height: '5rem' }} />
                     </div> : this.state.total.statewise.map((state) => {
                         if (state.state !== "Total") {
@@ -57,6 +58,7 @@ class States extends Component {
                     })}
                 </Row>
             </Container>
+
         );
     }
 };

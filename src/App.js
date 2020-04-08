@@ -13,6 +13,7 @@ function App() {
         </div>
       </Navbar>
       <Country />
+      <h2 className="d-flex justify-content-center">States</h2>
       <States />
     </div>
   );

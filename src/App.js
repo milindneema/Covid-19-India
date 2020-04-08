@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Navbar, NavbarBrand } from 'reactstrap';
 import './App.css';
+import Country from './components/CountryComponent'
+import States from './components/StateComponent'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container-fluid mt-3">
+      <Navbar dark radius="10px" color='primary' className="mb-2">
+        <div>
+          <NavbarBrand href='/' className="font-weight-bold">Covid-19-India</NavbarBrand>
+        </div>
+      </Navbar>
+      <Country />
+      <States />
     </div>
   );
 }

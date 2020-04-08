@@ -24,20 +24,23 @@ class States extends Component {
                 <Row>
                     {this.state.loading ? <div>Loading</div> : this.state.total.statewise.map((state) => {
                         if (state.state !== "Total") {
+                            const activePercent = (state.active / state.confirmed) * 100;
+                            const recoveredPercent = (state.recovered / state.confirmed) * 100;
+                            const deathsPercent = (state.deaths / state.confirmed) * 100;
                             return (
                                 <Col xs="12" sm="12" md="6" lg="4">
                                     <Card body outline color="primary" className="shadow m-3 bg-white rounded" >
                                         <CardTitle className="text-primary font-weight-bold"><h4>{state.state} &nbsp;&nbsp;<Badge color="primary">{state.deltaconfirmed}</Badge></h4></CardTitle>
                                         <CardText>
                                             <div>
-                                                <div className="text-center font-weight-bold">{state.confirmed}</div>
-                                                <Progress value={100}>100%</Progress>
-                                                <div className="text-center font-weight-bold">{state.recovered}</div>
-                                                <Progress color="success" value={50} />
-                                                <div className="text-center font-weight-bold">{state.active}</div>
-                                                <Progress color="warning" value={75} />
-                                                <div className="text-center font-weight-bold">{state.deaths}</div>
-                                                <Progress color="danger" value="100" />
+                                                <div className="text-center font-weight-bold">confirmed : {state.confirmed}</div>
+                                                <Progress Style="height: 22px; color:text-dark;" value={100}>100%</Progress>
+                                                <div className="text-center font-weight-bold">Recovered : {state.recovered}</div>
+                                                <Progress Style="height: 22px;" color="success" value={recoveredPercent ? recoveredPercent : 0}>{recoveredPercent ? recoveredPercent.toFixed(1) : 0}%</Progress>
+                                                <div className="text-center font-weight-bold">Active : {state.active}</div>
+                                                <Progress Style="height: 22px;" color="warning" value={activePercent ? activePercent : 0}>{activePercent ? activePercent.toFixed(1) : 0}%</Progress>
+                                                <div className="text-center font-weight-bold">Deaths : {state.deaths}</div>
+                                                <Progress Style="height: 22px;" color="danger" value={deathsPercent ? deathsPercent : 0}>{deathsPercent ? deathsPercent.toFixed(1) : 0}%</Progress>
                                             </div>
                                         </CardText>
                                     </Card>

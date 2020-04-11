@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "69f4e6715f796e6eb6e48c3a8b1e9800",
+    "revision": "ea6fb020a3ddc27edbdf4756f39f6946",
     "url": "/Covid-19-India/index.html"
   },
   {
-    "revision": "f2ee6794a4e36b6f7043",
+    "revision": "8466fcaa616d4e5e8fbb",
     "url": "/Covid-19-India/static/css/2.de424728.chunk.css"
   },
   {
-    "revision": "19d93107906f68a25977",
+    "revision": "7108d4827e8e27b8d5f0",
     "url": "/Covid-19-India/static/css/main.27fd15f6.chunk.css"
   },
   {
-    "revision": "f2ee6794a4e36b6f7043",
-    "url": "/Covid-19-India/static/js/2.d5653606.chunk.js"
+    "revision": "8466fcaa616d4e5e8fbb",
+    "url": "/Covid-19-India/static/js/2.5f673a13.chunk.js"
   },
   {
     "revision": "5ac48c47bb3912b14c2d8de4f56d5ae8",
-    "url": "/Covid-19-India/static/js/2.d5653606.chunk.js.LICENSE.txt"
+    "url": "/Covid-19-India/static/js/2.5f673a13.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "19d93107906f68a25977",
-    "url": "/Covid-19-India/static/js/main.19286ae2.chunk.js"
+    "revision": "7108d4827e8e27b8d5f0",
+    "url": "/Covid-19-India/static/js/main.7817fcd7.chunk.js"
   },
   {
     "revision": "7ebc4c97f5a69c8cd3c9",

@@ -2,7 +2,6 @@ import React from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import './App.css';
 import Country from './components/CountryComponent'
-import States from './components/StateComponent'
 
 function App() {
   return (
@@ -13,8 +12,7 @@ function App() {
         </div>
       </Navbar>
       <Country />
-      <h2 className="d-flex justify-content-center">States</h2>
-      <States />
+
     </div>
   );
 }

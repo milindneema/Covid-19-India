@@ -1,65 +1,55 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardText, Badge, Progress, Container, Row, Col, Spinner } from 'reactstrap';
+import { Card, CardTitle, Badge, Progress, Row, Col } from 'reactstrap';
 
 class States extends Component {
-    constructor(props) {
-        super(props);
+    // async componentDidMount() {
 
-        this.state = {
-            loading: true,
-            total: null
-        };
-    }
+    //     const response = await fetch('https://api.covid19india.org/v2/state_district_wise.json');
+    //     const data = await response.json();
+    //     this.setState({ district: data })
+    // }
 
-    async componentDidMount() {
 
-        const response = await fetch('https://api.covid19india.org/data.json');
-        const data = await response.json();
-        this.setState({ total: data, loading: false })
-    }
     render() {
-
         return (
 
-            <Container fluid={true} className="m-2 mb-5 d-flex justify-content-center" >
-                <Row>
-                    {this.state.loading ? <div className="d-flex justify-content-center">
-                        <Spinner color="primary" style={{ width: '5rem', height: '5rem' }} />
-                    </div> : this.state.total.statewise.map((state) => {
+            <Row>
+                {
+                    this.props.total.statewise.map((state) => {
                         if (state.state !== "Total") {
                             const activePercent = (state.active / state.confirmed) * 100;
                             const recoveredPercent = (state.recovered / state.confirmed) * 100;
                             const deathsPercent = (state.deaths / state.confirmed) * 100;
                             return (
-                                <Col xs="12" sm="12" md="6" lg="4">
+                                <Col key={state.state} xs="12" sm="12" md="6" lg="4" >
                                     <Card body outline color="primary" className="shadow m-3 bg-white rounded" >
-                                        <CardTitle className="text-primary font-weight-bold"><h4>{state.state} &nbsp;&nbsp;<Badge color="primary">{state.deltaconfirmed}</Badge></h4></CardTitle>
-                                        <CardText>
-                                            <div>
-                                                <div className="text-center font-weight-bold">confirmed : {state.confirmed}</div>
-                                                <Progress Style="height: 22px; color:text-dark;" value={100}>100%</Progress>
-                                                <div className="text-center font-weight-bold">Recovered : {state.recovered}</div>
-                                                <Progress Style="height: 22px;" color="success" value={recoveredPercent ? recoveredPercent : 0}>{recoveredPercent ? recoveredPercent.toFixed(1) : 0}%</Progress>
-                                                <div className="text-center font-weight-bold">Active : {state.active}</div>
-                                                <Progress Style="height: 22px;" color="warning" value={activePercent ? activePercent : 0}>{activePercent ? activePercent.toFixed(1) : 0}%</Progress>
-                                                <div className="text-center font-weight-bold">Deaths : {state.deaths}</div>
-                                                <Progress Style="height: 22px;" color="danger" value={deathsPercent ? deathsPercent : 0}>{deathsPercent ? deathsPercent.toFixed(1) : 0}%</Progress>
-                                            </div>
-                                        </CardText>
+                                        <CardTitle className="text-primary font-weight-bold"><h4>{state.state} &nbsp;&nbsp;<Badge pill color="primary">&#8593; {state.deltaconfirmed}</Badge></h4></CardTitle>
+                                        <div>
+                                            <div className="text-center font-weight-bold">confirmed : {state.confirmed}</div>
+                                            <Progress style={{ height: "22px" }} value={state.confirmed !== "0" ? 100 : 0}>100%</Progress>
+                                            <div className="text-center font-weight-bold">Recovered : {state.recovered}</div>
+                                            <Progress style={{ height: "22px" }} color="success" value={recoveredPercent ? recoveredPercent : 0}>{recoveredPercent ? recoveredPercent.toFixed(1) : 0}%</Progress>
+                                            <div className="text-center font-weight-bold">Active : {state.active}</div>
+                                            <Progress style={{ height: "22px" }} color="warning" value={activePercent ? activePercent : 0}>{activePercent ? activePercent.toFixed(1) : 0}%</Progress>
+                                            <div className="text-center font-weight-bold">Deaths : {state.deaths}</div>
+                                            <Progress style={{ height: "22px" }} color="danger" value={deathsPercent ? deathsPercent : 0}>{deathsPercent ? deathsPercent.toFixed(1) : 0}%</Progress>
+                                        </div>
                                     </Card>
+
                                 </Col>
                             )
                         }
                         else {
                             return (
-                                <div></div>
+                                <div key={state.state}></div>
                             )
                         }
-                    })}
-                </Row>
-            </Container>
+                    })
+                }
+            </Row >
+
 
         );
     }
-};
+}
 export default States;

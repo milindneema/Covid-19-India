@@ -30,7 +30,7 @@ class TableContaint extends Component {
             <div>
                 {this.state.loading ? <div className="d-flex justify-content-center">
                     <Spinner color="primary" style={{ width: '5rem', height: '5rem' }} />
-                </div> : this.state.district !== null ?
+                </div> : this.state.district !== null && this.state.district !== undefined ?
                         <Table size="sm" responsive borderless>
                             <thead>
                                 <tr >

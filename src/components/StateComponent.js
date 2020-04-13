@@ -15,9 +15,8 @@ class States extends Component {
     }
 
     handleState = (index) => {
-        if (this.state.stateindex === null) {
+        if (this.state.stateindex === null || this.state.stateindex !== index) {
             const state = this.props.total.statewise[index].state
-            console.log(state)
             this.setState({ stateData: state, stateindex: index })
         }
         else {

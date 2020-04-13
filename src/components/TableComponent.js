@@ -14,13 +14,14 @@ class TableContaint extends Component {
     }
 
     async componentDidMount() {
-
-        const response = await fetch('https://api.covid19india.org/v2/state_district_wise.json');
-        const data = await response.json();
         if (this.props.stateDistrict === null) {
             this.setState({ loading: false })
         } else {
+            const response = await fetch('https://api.covid19india.org/v2/state_district_wise.json');
+            const data = await response.json();
             const state = data.filter(states => this.props.stateDistrict === states.state)[0];
+            var obj = state.districtData;
+            obj.sort((a, b) => b.confirmed - a.confirmed);
             this.setState({ district: state, loading: false })
         }
 

@@ -9,7 +9,8 @@ class Country extends Component {
         this.state = {
             loading: true,
             total: null,
-            states: null
+            states: null,
+            timeseries: null,
         };
     }
 
@@ -17,7 +18,8 @@ class Country extends Component {
 
         const response = await fetch('https://api.covid19india.org/data.json');
         const data = await response.json();
-        this.setState({ total: data.statewise[0], states: data, loading: false })
+        const timeseries = data.cases_time_series.slice(-20);
+        this.setState({ total: data.statewise[0], states: data, timeseries: timeseries, loading: false })
     }
     render() {
         return (
@@ -34,19 +36,23 @@ class Country extends Component {
                             <Col xs="12" sm="6" md="6" lg="3">
                                 <Card body outline color="primary" className=" shadow m-3 bg-white rounded" >
                                     <h4><CardTitle className="text-primary font-weight-bold">Confirmed &nbsp;&nbsp;<Badge pill color="primary">&#8593; {this.state.total.deltaconfirmed}</Badge></CardTitle></h4>
-                                    <h4> <CardText className="text-primary font-weight-bold">{this.state.total.confirmed}</CardText></h4>
+                                    <h4> <CardText className="text-primary float-left font-weight-bold">{this.state.total.confirmed}
+                                    </CardText>
+                                    </h4>
                                 </Card>
                             </Col>
                             <Col xs="12" sm="6" md="6" lg="3">
                                 <Card body outline color="warning" className=" shadow m-3 bg-white rounded">
                                     <h4><CardTitle className="text-warning font-weight-bold">Active &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CardTitle></h4>
-                                    <h4> <CardText className="text-warning font-weight-bold">{this.state.total.active}</CardText></h4>
+                                    <h4><CardText className="text-warning  font-weight-bold">{this.state.total.active}</CardText>
+                                    </h4>
                                 </Card>
                             </Col>
                             <Col xs="12" sm="6" md="6" lg="3">
                                 <Card body outline color="success" className=" shadow m-3 bg-white rounded">
                                     <h4><CardTitle className="text-success font-weight-bold">Recovered &nbsp;&nbsp;&nbsp;&nbsp;<Badge pill color="success">&#8593; {this.state.total.deltarecovered}</Badge></CardTitle></h4>
-                                    <h4> <CardText className="text-success font-weight-bold">{this.state.total.recovered}</CardText></h4>
+                                    <h4> <CardText className="text-success float-left font-weight-bold">{this.state.total.recovered}</CardText>
+                                    </h4>
                                 </Card>
                             </Col>
                             <Col xs="12" sm="6" md="6" lg="3">

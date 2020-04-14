@@ -24,8 +24,8 @@ class TableContaint extends Component {
             obj.sort((a, b) => b.confirmed - a.confirmed);
             this.setState({ district: state, loading: false })
         }
-
     }
+
     render() {
         return (
             <div>
@@ -51,7 +51,8 @@ class TableContaint extends Component {
                                     )
                                 })}
                             </tbody>
-                        </Table> : <div></div>
+                        </Table> :
+                        <div></div>
                 }
             </div >
         )

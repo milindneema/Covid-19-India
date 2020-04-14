@@ -10,7 +10,6 @@ class Country extends Component {
             loading: true,
             total: null,
             states: null,
-            timeseries: null,
         };
     }
 
@@ -18,8 +17,7 @@ class Country extends Component {
 
         const response = await fetch('https://api.covid19india.org/data.json');
         const data = await response.json();
-        const timeseries = data.cases_time_series.slice(-20);
-        this.setState({ total: data.statewise[0], states: data, timeseries: timeseries, loading: false })
+        this.setState({ total: data.statewise[0], states: data, loading: false })
     }
     render() {
         return (

@@ -13,7 +13,7 @@ function App() {
       </Navbar>
       <Country />
       <footer className="bg-dark text-light p-2 text-center">
-        <p>Created by: <a href="https://github.com/milindneema">Milind Neema</a></p>
+        <p>Developed by: <a href="https://github.com/milindneema">Milind Neema</a></p>
         <p>Contact information:
           <a href="https://www.instagram.com/milind_neema/"><span className='fab fa-instagram p-1' Style={'font-size:30px;color:lightblue'}></span></a>
           <a href="https://github.com/milindneema"><span className='fab fa-github p-1' Style={'font-size:30px;color:lightblue'}></span></a>

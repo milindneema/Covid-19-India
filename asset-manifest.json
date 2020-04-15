@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/Covid-19-India/static/css/main.27fd15f6.chunk.css",
-    "main.js": "/Covid-19-India/static/js/main.ebef8a5e.chunk.js",
-    "main.js.map": "/Covid-19-India/static/js/main.ebef8a5e.chunk.js.map",
+    "main.js": "/Covid-19-India/static/js/main.8acb7edc.chunk.js",
+    "main.js.map": "/Covid-19-India/static/js/main.8acb7edc.chunk.js.map",
     "runtime-main.js": "/Covid-19-India/static/js/runtime-main.38be7b48.js",
     "runtime-main.js.map": "/Covid-19-India/static/js/runtime-main.38be7b48.js.map",
     "static/css/2.de424728.chunk.css": "/Covid-19-India/static/css/2.de424728.chunk.css",
-    "static/js/2.9d6f8792.chunk.js": "/Covid-19-India/static/js/2.9d6f8792.chunk.js",
-    "static/js/2.9d6f8792.chunk.js.map": "/Covid-19-India/static/js/2.9d6f8792.chunk.js.map",
+    "static/js/2.3e5cbe76.chunk.js": "/Covid-19-India/static/js/2.3e5cbe76.chunk.js",
+    "static/js/2.3e5cbe76.chunk.js.map": "/Covid-19-India/static/js/2.3e5cbe76.chunk.js.map",
     "index.html": "/Covid-19-India/index.html",
-    "precache-manifest.f2d10763b59057e0122b63e5170b02d3.js": "/Covid-19-India/precache-manifest.f2d10763b59057e0122b63e5170b02d3.js",
+    "precache-manifest.655afd7bc3954e63caa10028fcacebc8.js": "/Covid-19-India/precache-manifest.655afd7bc3954e63caa10028fcacebc8.js",
     "service-worker.js": "/Covid-19-India/service-worker.js",
     "static/css/2.de424728.chunk.css.map": "/Covid-19-India/static/css/2.de424728.chunk.css.map",
     "static/css/main.27fd15f6.chunk.css.map": "/Covid-19-India/static/css/main.27fd15f6.chunk.css.map",
-    "static/js/2.9d6f8792.chunk.js.LICENSE.txt": "/Covid-19-India/static/js/2.9d6f8792.chunk.js.LICENSE.txt"
+    "static/js/2.3e5cbe76.chunk.js.LICENSE.txt": "/Covid-19-India/static/js/2.3e5cbe76.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.38be7b48.js",
     "static/css/2.de424728.chunk.css",
-    "static/js/2.9d6f8792.chunk.js",
+    "static/js/2.3e5cbe76.chunk.js",
     "static/css/main.27fd15f6.chunk.css",
-    "static/js/main.ebef8a5e.chunk.js"
+    "static/js/main.8acb7edc.chunk.js"
   ]
 }

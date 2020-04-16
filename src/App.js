@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import './App.css';
 import Country from './components/CountryComponent'
+import ReactGA from 'react-ga';
+
 
 function App() {
+  useEffect(() => {
+
+    ReactGA.initialize('UA-163580653-1');
+    ReactGA.pageview(window.location.pathname);
+
+  }, []);
   return (
     <div className="container-fluid mt-3">
       <Navbar dark radius="10px" color='primary' className="mb-2">

@@ -38,16 +38,22 @@ class TableContaint extends Component {
                                 <tr >
                                     <th><h4><Badge color="dark">#</Badge></h4></th>
                                     <th><h4><Badge color="dark">District</Badge></h4></th>
-                                    <th><h4><Badge color="dark">Confirmed</Badge></h4></th>
+                                    <th><h4><Badge color="dark"> {window.innerWidth <= 769
+                                        ? window.innerWidth <= 375
+                                            ? 'C'
+                                            : 'Cnfmd'
+                                        : 'Confirmed'}</Badge></h4></th>
+                                    <th><h4><Badge color="dark">Today</Badge></h4></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.state.district.districtData.map((districtData, index) => {
                                     return (
                                         <tr key={index}>
-                                            <td ><h5><Badge color="secondary" >{index + 1}</Badge></h5></td>
-                                            <td ><h5><Badge color="secondary">{districtData.district}</Badge></h5></td>
-                                            <td><h5><Badge color="secondary">{districtData.confirmed}</Badge></h5></td>
+                                            <td><h5><Badge color="secondary" >{index + 1}</Badge></h5></td>
+                                            <td><h5><Badge color="secondary">{districtData.district}</Badge></h5></td>
+                                            <td align='left'><h5><Badge color="secondary">{districtData.confirmed}</Badge></h5></td>
+                                            <td align='left'><h5><Badge color="secondary">{districtData.delta.confirmed}</Badge></h5></td>
                                         </tr>
                                     )
                                 })}

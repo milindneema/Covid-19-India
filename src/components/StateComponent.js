@@ -11,19 +11,22 @@ class States extends Component {
         this.state = {
             stateindex: null,
             stateData: null,
+            modal: false
         }
     }
+
 
     handleState = (index) => {
         if (this.state.stateindex === null || this.state.stateindex !== index) {
             const state = this.props.total.statewise[index].state
             this.setState({ stateData: state, stateindex: index })
+            this.toggle()
         }
         else {
             this.setState({ stateData: null, stateindex: null })
         }
     }
-
+    toggle = () => this.state.modal ? this.setState({ modal: false }) : this.setState({ modal: true });
     render() {
         const card = this.props.total.statewise.map((state, index) => {
             if (state.state !== "Total") {
@@ -53,7 +56,7 @@ class States extends Component {
                                 <p className="text-muted">*This card is clickable</p>
                             </div>
                         </Card>
-                        {this.state.stateindex === index ? <Table stateDistrict={this.state.stateData} /> : <div></div>}
+                        {this.state.stateindex === index ? <Table stateDistrict={this.state.stateData} modal={this.state.modal} toggle={() => this.toggle} /> : <div></div>}
                     </Col>
                 )
             }

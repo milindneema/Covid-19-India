@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Spinner, Badge } from 'reactstrap';
+import { Table, Spinner, Badge, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 
 class TableContaint extends Component {
@@ -9,7 +9,7 @@ class TableContaint extends Component {
 
         this.state = {
             loading: true,
-            district: null,
+            district: null
         }
     }
 
@@ -26,6 +26,8 @@ class TableContaint extends Component {
             this.setState({ district: state, loading: false })
         }
     }
+    size = window.innerWidth <= 769 ? "sm" : 'lg'
+    style = window.innerWidth <= 769 ? { width: '75%', left: "12%" } : { width: '75%' }
 
     render() {
         return (
@@ -33,32 +35,35 @@ class TableContaint extends Component {
                 {this.state.loading ? <div className="d-flex justify-content-center">
                     <Spinner color="primary" style={{ width: '5rem', height: '5rem' }} />
                 </div> : this.state.district !== null && this.state.district !== undefined ?
-                        <Table size="sm" responsive borderless>
-                            <thead>
-                                <tr >
-                                    <th><h4><Badge color="dark">#</Badge></h4></th>
-                                    <th><h4><Badge color="dark">District</Badge></h4></th>
-                                    <th><h4><Badge color="dark"> {window.innerWidth <= 769
-                                        ? window.innerWidth <= 375
-                                            ? 'C'
-                                            : 'Cnfmd'
-                                        : 'Confirmed'}</Badge></h4></th>
-                                    <th><h4><Badge color="dark">Today</Badge></h4></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.district.districtData.map((districtData, index) => {
-                                    return (
-                                        <tr key={index}>
-                                            <td><h5><Badge color="secondary" >{index + 1}</Badge></h5></td>
-                                            <td><h5><Badge color="secondary">{districtData.district}</Badge></h5></td>
-                                            <td align='left'><h5><Badge color="secondary">{districtData.confirmed}</Badge></h5></td>
-                                            <td align='left'><h5><Badge color="secondary">{districtData.delta.confirmed}</Badge></h5></td>
+                        <Modal isOpen={this.props.modal} toggle={this.props.toggle()} size={this.size} style={this.style} centered>
+                            <ModalHeader>District Wise Data</ModalHeader>
+                            <ModalBody>
+                                <Table size="sm" responsive borderless>
+                                    <thead>
+                                        <tr >
+                                            <th><h4><Badge color="dark">District</Badge></h4></th>
+                                            <th><h4><Badge color="dark"> {window.innerWidth <= 769
+                                                ? window.innerWidth <= 375
+                                                    ? 'Cfd'
+                                                    : 'Cnfmd'
+                                                : 'Confirmed'}</Badge></h4></th>
+                                            <th><h4><Badge color="dark">Today</Badge></h4></th>
                                         </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </Table> :
+                                    </thead>
+                                    <tbody>
+                                        {this.state.district.districtData.map((districtData, index) => {
+                                            return (
+                                                <tr key={index}>
+                                                    <td ><h5><Badge color="secondary">{districtData.district}</Badge></h5></td>
+                                                    <td ><h5><Badge color="primary">{districtData.confirmed}</Badge></h5></td>
+                                                    <td ><h5><Badge color="danger">{districtData.delta.confirmed}</Badge></h5></td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </Table>
+                            </ModalBody>
+                        </Modal> :
                         <div></div>
                 }
             </div >

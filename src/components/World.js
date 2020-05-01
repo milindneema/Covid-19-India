@@ -10,24 +10,29 @@ import {
   Spinner,
   Button,
 } from 'reactstrap';
-import States from './StateComponent';
+import AllCountry from './AllCountry';
 import { Link } from 'react-router-dom';
 
-class Country extends Component {
+class World extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       loading: true,
-      total: null,
-      states: null,
+      World: null,
+      CountryData: null,
     };
   }
 
   async componentDidMount() {
-    const response = await fetch('https://api.covid19india.org/data.json');
+    const response = await fetch('https://corona.lmao.ninja/v2/all');
+    const response2 = await fetch(
+      'https://corona.lmao.ninja/v2/countries?sort=cases'
+    );
     const data = await response.json();
-    this.setState({ total: data.statewise[0], states: data, loading: false });
+    const countries = await response2.json();
+    console.log(data);
+    this.setState({ World: data, CountryData: countries, loading: false });
   }
   render() {
     return (
@@ -42,7 +47,7 @@ class Country extends Component {
         ) : (
           <div>
             <Row className='d-flex justify-content-center'>
-              <Col className='col-5 col-md-4 offset-md-2 '>
+              <Col className='col-5 col-md-4 offset-md-2'>
                 <Link to='/'>
                   <Button
                     outline
@@ -73,17 +78,15 @@ class Country extends Component {
                   color='primary'
                   className=' shadow m-3 bg-white rounded'
                 >
-                  <h4>
-                    <CardTitle className='text-primary font-weight-bold'>
-                      Confirmed &nbsp;&nbsp;
-                      <Badge pill color='primary'>
-                        &#8593; {this.state.total.deltaconfirmed}
-                      </Badge>
-                    </CardTitle>
-                  </h4>
+                  <CardTitle className='text-primary font-weight-bold'>
+                    Confirmed &nbsp;&nbsp;&nbsp;
+                    <Badge pill color='primary'>
+                      &#8593; {this.state.World.todayCases}
+                    </Badge>
+                  </CardTitle>
                   <h4>
                     <CardText className='text-primary float-left font-weight-bold'>
-                      {this.state.total.confirmed}
+                      {this.state.World.cases}
                     </CardText>
                   </h4>
                 </Card>
@@ -95,14 +98,13 @@ class Country extends Component {
                   color='warning'
                   className=' shadow m-3 bg-white rounded'
                 >
-                  <h4>
-                    <CardTitle className='text-warning font-weight-bold'>
-                      Active &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </CardTitle>
-                  </h4>
+                  <CardTitle className='text-warning font-weight-bold'>
+                    Active &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </CardTitle>
+
                   <h4>
                     <CardText className='text-warning  font-weight-bold'>
-                      {this.state.total.active}
+                      {this.state.World.active}
                     </CardText>
                   </h4>
                 </Card>
@@ -114,17 +116,13 @@ class Country extends Component {
                   color='success'
                   className=' shadow m-3 bg-white rounded'
                 >
-                  <h4>
-                    <CardTitle className='text-success font-weight-bold'>
-                      Recovered &nbsp;&nbsp;&nbsp;&nbsp;
-                      <Badge pill color='success'>
-                        &#8593; {this.state.total.deltarecovered}
-                      </Badge>
-                    </CardTitle>
-                  </h4>
+                  <CardTitle className='text-success font-weight-bold'>
+                    Recovered &nbsp;&nbsp;&nbsp;&nbsp;
+                  </CardTitle>
+
                   <h4>
                     <CardText className='text-success float-left font-weight-bold'>
-                      {this.state.total.recovered}
+                      {this.state.World.recovered}
                     </CardText>
                   </h4>
                 </Card>
@@ -136,17 +134,15 @@ class Country extends Component {
                   color='danger'
                   className=' shadow m-3 bg-white rounded'
                 >
-                  <h4>
-                    <CardTitle className='text-danger font-weight-bold'>
-                      Deaths &nbsp;&nbsp;
-                      <Badge pill color='danger'>
-                        &#8593; {this.state.total.deltadeaths}
-                      </Badge>
-                    </CardTitle>
-                  </h4>
+                  <CardTitle className='text-danger font-weight-bold'>
+                    Deaths &nbsp;&nbsp;&nbsp;
+                    <Badge pill color='danger'>
+                      &#8593; {this.state.World.todayDeaths}
+                    </Badge>
+                  </CardTitle>
                   <h4>
                     <CardText className='text-danger font-weight-bold'>
-                      {this.state.total.deaths}
+                      {this.state.World.deaths}
                     </CardText>
                   </h4>
                 </Card>
@@ -154,15 +150,13 @@ class Country extends Component {
             </Row>
             <h2 className='d-flex justify-content-center'>
               States
-              <span style={{ marginLeft: '10px' }}>
-                {this.state.total.lastupdatedtime}
-              </span>
+              <span style={{ marginLeft: '10px' }}></span>
             </h2>
-            <States total={this.state.states} />
+            <AllCountry CountryData={this.state.CountryData} />
           </div>
         )}
       </Container>
     );
   }
 }
-export default Country;
+export default World;

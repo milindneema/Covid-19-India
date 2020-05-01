@@ -1,0 +1,17 @@
+.NavLink {
+  color: black;
+  font: outline;
+  font-size: large;
+  font-weight: 700;
+  padding: 1em;
+}
+.table {
+  width: 100%;
+  background-color: grey;
+  color: white;
+  margin: 0em;
+}
+
+.todayData {
+  font-size: 10px;
+}

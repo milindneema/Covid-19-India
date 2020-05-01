@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+  HashRouter,
+} from 'react-router-dom';
 import './App.css';
 import Country from './components/CountryComponent';
 import ReactGA from 'react-ga';
@@ -22,7 +28,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className='container-fluid mt-3'>
         <Header />
         <Switch>
@@ -32,7 +38,7 @@ function App() {
         </Switch>
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

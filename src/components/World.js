@@ -149,8 +149,10 @@ class World extends Component {
               </Col>
             </Row>
             <h2 className='d-flex justify-content-center'>
-              States
-              <span style={{ marginLeft: '10px' }}></span>
+              Country
+              <span style={{ marginLeft: '10px' }}>
+                {new Date(this.state.World.updated).toLocaleString()}
+              </span>
             </h2>
             <AllCountry CountryData={this.state.CountryData} />
           </div>

@@ -12,6 +12,7 @@ import {
 } from 'reactstrap';
 import States from './StateComponent';
 import { Link } from 'react-router-dom';
+import { numberWithCommas } from '../utils/CommonFunction';
 
 class Country extends Component {
   constructor(props) {
@@ -77,13 +78,14 @@ class Country extends Component {
                     <CardTitle className='text-primary font-weight-bold'>
                       Confirmed &nbsp;&nbsp;
                       <Badge pill color='primary'>
-                        &#8593; {this.state.total.deltaconfirmed}
+                        &#8593;{' '}
+                        {numberWithCommas(this.state.total.deltaconfirmed)}
                       </Badge>
                     </CardTitle>
                   </h4>
                   <h4>
                     <CardText className='text-primary float-left font-weight-bold'>
-                      {this.state.total.confirmed}
+                      {numberWithCommas(this.state.total.confirmed)}
                     </CardText>
                   </h4>
                 </Card>
@@ -102,7 +104,7 @@ class Country extends Component {
                   </h4>
                   <h4>
                     <CardText className='text-warning  font-weight-bold'>
-                      {this.state.total.active}
+                      {numberWithCommas(this.state.total.active)}
                     </CardText>
                   </h4>
                 </Card>
@@ -118,13 +120,14 @@ class Country extends Component {
                     <CardTitle className='text-success font-weight-bold'>
                       Recovered &nbsp;&nbsp;&nbsp;&nbsp;
                       <Badge pill color='success'>
-                        &#8593; {this.state.total.deltarecovered}
+                        &#8593;{' '}
+                        {numberWithCommas(this.state.total.deltarecovered)}
                       </Badge>
                     </CardTitle>
                   </h4>
                   <h4>
                     <CardText className='text-success float-left font-weight-bold'>
-                      {this.state.total.recovered}
+                      {numberWithCommas(this.state.total.recovered)}
                     </CardText>
                   </h4>
                 </Card>
@@ -140,13 +143,13 @@ class Country extends Component {
                     <CardTitle className='text-danger font-weight-bold'>
                       Deaths &nbsp;&nbsp;
                       <Badge pill color='danger'>
-                        &#8593; {this.state.total.deltadeaths}
+                        &#8593; {numberWithCommas(this.state.total.deltadeaths)}
                       </Badge>
                     </CardTitle>
                   </h4>
                   <h4>
                     <CardText className='text-danger font-weight-bold'>
-                      {this.state.total.deaths}
+                      {numberWithCommas(this.state.total.deaths)}
                     </CardText>
                   </h4>
                 </Card>

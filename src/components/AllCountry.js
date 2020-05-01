@@ -1,30 +1,27 @@
 import React from 'react';
 import { Table, Badge } from 'reactstrap';
+import { numberWithCommas } from '../utils/CommonFunction';
 
 const AllCountry = ({ CountryData }) => {
   const rows = CountryData.map((country) => {
     return (
       <tr key={country.country}>
         <td>{country.country}</td>
-        {/* <td>{country.cases}</td> */}
         <td>
-          {country.active}
+          {numberWithCommas(country.cases)}
           <br />
           <Badge className='.todayData' pill color='danger'>
-            &#8593; {country.todayCases}
+            &#8593; {numberWithCommas(country.todayCases)}
           </Badge>
         </td>
-        <td>{country.recovered}</td>
-        <td>{country.deaths}</td>
+        <td>{numberWithCommas(country.active)}</td>
+        <td>{numberWithCommas(country.recovered)}</td>
+        <td>{numberWithCommas(country.deaths)}</td>
       </tr>
     );
   });
   return (
-    <Table
-      className='table'
-      responsive
-      size={window.innerWidth <= 576 ? 'sm' : ''}
-    >
+    <Table className='table' responsive size='sm'>
       <thead>
         <tr>
           <th style={{ width: '20%' }}>
@@ -34,13 +31,13 @@ const AllCountry = ({ CountryData }) => {
                 : 'CONTRY'
               : 'Country Name'}
           </th>
-          {/* <th style={{ width: '20%' }}>
+          <th style={{ width: '20%' }}>
             {window.innerWidth <= 769
               ? window.innerWidth <= 576
                 ? 'Cfd'
                 : 'Cnfmd'
               : 'Confirmed'}
-          </th> */}
+          </th>
           <th style={{ width: '20%' }}>
             {window.innerWidth <= 769
               ? window.innerWidth <= 576

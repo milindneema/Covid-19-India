@@ -12,6 +12,7 @@ import {
 } from 'reactstrap';
 import AllCountry from './AllCountry';
 import { Link } from 'react-router-dom';
+import { numberWithCommas } from '../utils/CommonFunction';
 
 class World extends Component {
   constructor(props) {
@@ -81,12 +82,12 @@ class World extends Component {
                   <CardTitle className='text-primary font-weight-bold'>
                     Confirmed &nbsp;&nbsp;&nbsp;
                     <Badge pill color='primary'>
-                      &#8593; {this.state.World.todayCases}
+                      &#8593; {numberWithCommas(this.state.World.todayCases)}
                     </Badge>
                   </CardTitle>
                   <h4>
                     <CardText className='text-primary float-left font-weight-bold'>
-                      {this.state.World.cases}
+                      {numberWithCommas(this.state.World.cases)}
                     </CardText>
                   </h4>
                 </Card>
@@ -104,7 +105,7 @@ class World extends Component {
 
                   <h4>
                     <CardText className='text-warning  font-weight-bold'>
-                      {this.state.World.active}
+                      {numberWithCommas(this.state.World.active)}
                     </CardText>
                   </h4>
                 </Card>
@@ -122,7 +123,7 @@ class World extends Component {
 
                   <h4>
                     <CardText className='text-success float-left font-weight-bold'>
-                      {this.state.World.recovered}
+                      {numberWithCommas(this.state.World.recovered)}
                     </CardText>
                   </h4>
                 </Card>
@@ -137,23 +138,24 @@ class World extends Component {
                   <CardTitle className='text-danger font-weight-bold'>
                     Deaths &nbsp;&nbsp;&nbsp;
                     <Badge pill color='danger'>
-                      &#8593; {this.state.World.todayDeaths}
+                      &#8593; {numberWithCommas(this.state.World.todayDeaths)}
                     </Badge>
                   </CardTitle>
                   <h4>
                     <CardText className='text-danger font-weight-bold'>
-                      {this.state.World.deaths}
+                      {numberWithCommas(this.state.World.deaths)}
                     </CardText>
                   </h4>
                 </Card>
               </Col>
             </Row>
-            <h2 className='d-flex justify-content-center'>
+            <h5 className='d-flex justify-content-center'>
               Country
               <span style={{ marginLeft: '10px' }}>
-                {new Date(this.state.World.updated).toLocaleString()}
+                ({new Date(this.state.World.updated).toLocaleString()}
               </span>
-            </h2>
+              )
+            </h5>
             <AllCountry CountryData={this.state.CountryData} />
           </div>
         )}

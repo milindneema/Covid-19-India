@@ -4,11 +4,11 @@ import {
   CardTitle,
   CardText,
   Badge,
-  Container,
   Row,
   Col,
   Spinner,
   Button,
+  Container,
 } from 'reactstrap';
 import States from './StateComponent';
 import { Link } from 'react-router-dom';
@@ -41,129 +41,112 @@ class Country extends Component {
             />
           </div>
         ) : (
-          <div>
-            <Row className='d-flex justify-content-center'>
-              <Col className='col-5 col-md-4 offset-md-2 '>
-                <Link to='/'>
-                  <Button
-                    outline
-                    color='primary'
-                    style={{ padding: '.4em 2em' }}
-                  >
-                    India
+            <div className='m-2 mb-5 justify-content-center'>
+
+              <Row className='d-flex justify-content-center'>
+
+                <Col className='col-5 col-md-4 offset-md-2 '>
+                  <Link to='/'>
+                    <Button outline color='primary' style={{ padding: '.4em 2em' }}>
+                      India
                   </Button>
-                </Link>
-              </Col>
-              <Col className='col-5 col-md-4 offset-md-2'>
-                <Link to='/world'>
-                  <Button
-                    outline
-                    color='primary'
-                    style={{ padding: '.4em 2em' }}
-                  >
-                    World
+                  </Link>
+                </Col>
+
+                <Col className='col-5 col-md-4 offset-md-2'>
+                  <Link to='/world'>
+                    <Button outline color='primary' style={{ padding: '.4em 2em' }}>
+                      World
                   </Button>
-                </Link>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs='12' sm='6' md='6' lg='3'>
-                <Card
-                  body
-                  outline
-                  color='primary'
-                  className=' shadow m-3 bg-white rounded'
-                >
-                  <h4>
-                    <CardTitle className='text-primary font-weight-bold'>
-                      Confirmed &nbsp;&nbsp;
+                  </Link>
+                </Col>
+
+              </Row>
+
+              <Row>
+
+                <Col xs='12' sm='6' md='6' lg='3'>
+                  <Card body outline color='primary' className=' shadow m-3 bg-dark rounded'>
+                    <h5>
+                      <CardTitle className='text-primary font-weight-bold'>
+                        Confirmed &nbsp;&nbsp;
                       <Badge pill color='primary'>
-                        &#8593;{' '}
+                          &#8593;
                         {numberWithCommas(this.state.total.deltaconfirmed)}
-                      </Badge>
+                        </Badge>
+                      </CardTitle>
+                    </h5>
+                    <h4>
+                      <CardText className='text-primary float-left font-weight-bold'>
+                        {numberWithCommas(this.state.total.confirmed)}
+                      </CardText>
+                    </h4>
+                  </Card>
+                </Col>
+
+                <Col xs='12' sm='6' md='6' lg='3'>
+                  <Card body outline color='warning' className=' shadow m-3 bg-dark rounded'>
+                    <h5>
+                      <CardTitle className='text-warning font-weight-bold'>
+                        Active &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </CardTitle>
-                  </h4>
-                  <h4>
-                    <CardText className='text-primary float-left font-weight-bold'>
-                      {numberWithCommas(this.state.total.confirmed)}
-                    </CardText>
-                  </h4>
-                </Card>
-              </Col>
-              <Col xs='12' sm='6' md='6' lg='3'>
-                <Card
-                  body
-                  outline
-                  color='warning'
-                  className=' shadow m-3 bg-white rounded'
-                >
-                  <h4>
-                    <CardTitle className='text-warning font-weight-bold'>
-                      Active &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </CardTitle>
-                  </h4>
-                  <h4>
-                    <CardText className='text-warning  font-weight-bold'>
-                      {numberWithCommas(this.state.total.active)}
-                    </CardText>
-                  </h4>
-                </Card>
-              </Col>
-              <Col xs='12' sm='6' md='6' lg='3'>
-                <Card
-                  body
-                  outline
-                  color='success'
-                  className=' shadow m-3 bg-white rounded'
-                >
-                  <h4>
-                    <CardTitle className='text-success font-weight-bold'>
-                      Recovered &nbsp;&nbsp;&nbsp;&nbsp;
+                    </h5>
+                    <h4>
+                      <CardText className='text-warning  font-weight-bold'>
+                        {numberWithCommas(this.state.total.active)}
+                      </CardText>
+                    </h4>
+                  </Card>
+                </Col>
+
+                <Col xs='12' sm='6' md='6' lg='3'>
+                  <Card body outline color='success' className=' shadow m-3 bg-dark rounded' >
+                    <h5>
+                      <CardTitle className='text-success font-weight-bold'>
+                        Recovered &nbsp;&nbsp;&nbsp;&nbsp;
                       <Badge pill color='success'>
-                        &#8593;{' '}
+                          &#8593;
                         {numberWithCommas(this.state.total.deltarecovered)}
-                      </Badge>
-                    </CardTitle>
-                  </h4>
-                  <h4>
-                    <CardText className='text-success float-left font-weight-bold'>
-                      {numberWithCommas(this.state.total.recovered)}
-                    </CardText>
-                  </h4>
-                </Card>
-              </Col>
-              <Col xs='12' sm='6' md='6' lg='3'>
-                <Card
-                  body
-                  outline
-                  color='danger'
-                  className=' shadow m-3 bg-white rounded'
-                >
-                  <h4>
-                    <CardTitle className='text-danger font-weight-bold'>
-                      Deaths &nbsp;&nbsp;
+                        </Badge>
+                      </CardTitle>
+                    </h5>
+                    <h4>
+                      <CardText className='text-success float-left font-weight-bold'>
+                        {numberWithCommas(this.state.total.recovered)}
+                      </CardText>
+                    </h4>
+                  </Card>
+                </Col>
+
+                <Col xs='12' sm='6' md='6' lg='3'>
+                  <Card body outline color='danger' className=' shadow m-3 bg-dark rounded'>
+                    <h5>
+                      <CardTitle className='text-danger font-weight-bold'>
+                        Deaths &nbsp;&nbsp;
                       <Badge pill color='danger'>
-                        &#8593; {numberWithCommas(this.state.total.deltadeaths)}
-                      </Badge>
-                    </CardTitle>
-                  </h4>
-                  <h4>
-                    <CardText className='text-danger font-weight-bold'>
-                      {numberWithCommas(this.state.total.deaths)}
-                    </CardText>
-                  </h4>
-                </Card>
-              </Col>
-            </Row>
-            <h2 className='d-flex justify-content-center'>
-              States
+                          &#8593; {numberWithCommas(this.state.total.deltadeaths)}
+                        </Badge>
+                      </CardTitle>
+                    </h5>
+                    <h4>
+                      <CardText className='text-danger font-weight-bold'>
+                        {numberWithCommas(this.state.total.deaths)}
+                      </CardText>
+                    </h4>
+                  </Card>
+                </Col>
+
+              </Row>
+
+              <h2 className='d-flex justify-content-center text-white'>
+                States
               <span style={{ marginLeft: '10px' }}>
-                {this.state.total.lastupdatedtime}
-              </span>
-            </h2>
-            <States total={this.state.states} />
-          </div>
-        )}
+                  {this.state.total.lastupdatedtime}
+                </span>
+              </h2>
+              <States total={this.state.states} />
+            </div>
+          )}
       </Container>
     );
   }

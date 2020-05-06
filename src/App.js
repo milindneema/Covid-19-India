@@ -14,10 +14,10 @@ import Footer from './components/Footer';
 import World from './components/World';
 
 function App() {
-  useEffect(() => {
-    ReactGA.initialize('UA-163580653-1');
-    ReactGA.pageview(window.location.pathname);
-  }, []);
+  //   useEffect(() => {
+  //     ReactGA.initialize('UA-163580653-1');
+  //     ReactGA.pageview(window.location.pathname);
+  //   }, []);
 
   const country = () => {
     return <Country />;
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <HashRouter>
-      <div className='container-fluid mt-3'>
+      <div className='bg-dark'>
         <Header />
         <Switch>
           <Route path='/india' component={country} />

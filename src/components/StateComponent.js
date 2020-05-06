@@ -15,7 +15,7 @@ class States extends Component {
   }
 
   handleState = (index) => {
-    if (this.state.stateindex === null || this.state.stateindex !== index) {
+    if (this.state.stateindex === null || this.state.stateindex !== index || this.state.stateindex === index) {
       const state = this.props.total.statewise[index].state;
       this.toggle();
       this.setState({ stateData: state, stateindex: index });
@@ -41,7 +41,7 @@ class States extends Component {
               body
               outline
               color='primary'
-              className='shadow m-3 bg-white rounded'
+              className='shadow m-3 bg-dark rounded'
               onClick={() => {
                 this.handleState(index);
               }}
@@ -55,46 +55,46 @@ class States extends Component {
                 </h4>
               </CardTitle>
               <div>
-                <div className='text-center font-weight-bold'>
+                <div className='text-center text-white font-weight-bold'>
                   confirmed : {numberWithCommas(state.confirmed)}
                 </div>
                 <Progress
-                  style={{ height: '22px' }}
+                  style={{ height: '22px', backgroundColor: 'grey' }}
                   value={state.confirmed !== '0' ? 100 : 0}
                 >
                   100%
                 </Progress>
-                <div className='text-center font-weight-bold'>
+                <div className='text-center text-white font-weight-bold'>
                   Recovered : {numberWithCommas(state.recovered)}
                 </div>
                 <Progress
-                  style={{ height: '22px' }}
+                  style={{ height: '22px', backgroundColor: 'grey' }}
                   color='success'
                   value={recoveredPercent ? recoveredPercent : 0}
                 >
                   {recoveredPercent ? recoveredPercent.toFixed(1) : 0}%
                 </Progress>
-                <div className='text-center font-weight-bold'>
+                <div className='text-center text-white font-weight-bold'>
                   Active : {numberWithCommas(state.active)}
                 </div>
                 <Progress
-                  style={{ height: '22px' }}
+                  style={{ height: '22px', backgroundColor: 'grey' }}
                   color='warning'
                   value={activePercent ? activePercent : 0}
                 >
                   {activePercent ? activePercent.toFixed(1) : 0}%
                 </Progress>
-                <div className='text-center font-weight-bold'>
+                <div className='text-center text-white font-weight-bold'>
                   Deaths : {numberWithCommas(state.deaths)}
                 </div>
                 <Progress
-                  style={{ height: '22px' }}
+                  style={{ height: '22px', backgroundColor: 'grey' }}
                   color='danger'
                   value={deathsPercent ? deathsPercent : 0}
                 >
                   {deathsPercent ? deathsPercent.toFixed(1) : 0}%
                 </Progress>
-                <p className='text-muted mt-2'>*This card is clickable</p>
+                <p className='text-white mt-2'>*This card is clickable</p>
               </div>
             </Card>
             {this.state.stateindex === index ? (
@@ -104,8 +104,8 @@ class States extends Component {
                 toggle={() => this.toggle}
               />
             ) : (
-              <div></div>
-            )}
+                <div></div>
+              )}
           </Col>
         );
       } else {

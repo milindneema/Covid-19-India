@@ -46,119 +46,125 @@ class World extends Component {
             />
           </div>
         ) : (
-          <div>
-            <Row className='d-flex justify-content-center'>
-              <Col className='col-5 col-md-4 offset-md-2'>
-                <Link to='/'>
-                  <Button
+            <div>
+              <Row className='d-flex justify-content-center'>
+                <Col className='col-5 col-md-4 offset-md-2'>
+                  <Link to='/'>
+                    <Button
+                      outline
+                      color='primary'
+                      style={{ padding: '.4em 2.5em' }}
+                    >
+                      India
+                  </Button>
+                  </Link>
+                </Col>
+                <Col className='col-5 col-md-4 offset-md-2'>
+                  <Link to='/world'>
+                    <Button
+                      outline
+                      color='primary'
+                      style={{ padding: '.4em 2.5em' }}
+                    >
+                      World
+                  </Button>
+                  </Link>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs='12' sm='6' md='6' lg='3'>
+                  <Card
+                    body
                     outline
                     color='primary'
-                    style={{ padding: '.4em 2em' }}
+                    className=' shadow m-3 bg-dark rounded'
                   >
-                    India
-                  </Button>
-                </Link>
-              </Col>
-              <Col className='col-5 col-md-4 offset-md-2'>
-                <Link to='/world'>
-                  <Button
-                    outline
-                    color='primary'
-                    style={{ padding: '.4em 2em' }}
-                  >
-                    World
-                  </Button>
-                </Link>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs='12' sm='6' md='6' lg='3'>
-                <Card
-                  body
-                  outline
-                  color='primary'
-                  className=' shadow m-3 bg-white rounded'
-                >
-                  <CardTitle className='text-primary font-weight-bold'>
-                    Confirmed &nbsp;&nbsp;&nbsp;
+                    <h5>
+                      <CardTitle className='text-primary font-weight-bold'>
+                        Confirmed &nbsp;&nbsp;&nbsp;
                     <Badge pill color='primary'>
-                      &#8593; {numberWithCommas(this.state.World.todayCases)}
-                    </Badge>
+                          &#8593; {numberWithCommas(this.state.World.todayCases)}
+                        </Badge>
+                      </CardTitle>
+                    </h5>
+                    <h4>
+                      <CardText className='text-primary float-left font-weight-bold'>
+                        {numberWithCommas(this.state.World.cases)}
+                      </CardText>
+                    </h4>
+                  </Card>
+                </Col>
+                <Col xs='12' sm='6' md='6' lg='3'>
+                  <Card
+                    body
+                    outline
+                    color='warning'
+                    className=' shadow m-3 bg-dark rounded'
+                  >
+                    <h5>
+                      <CardTitle className='text-warning font-weight-bold'>
+                        Active &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   </CardTitle>
-                  <h4>
-                    <CardText className='text-primary float-left font-weight-bold'>
-                      {numberWithCommas(this.state.World.cases)}
-                    </CardText>
-                  </h4>
-                </Card>
-              </Col>
-              <Col xs='12' sm='6' md='6' lg='3'>
-                <Card
-                  body
-                  outline
-                  color='warning'
-                  className=' shadow m-3 bg-white rounded'
-                >
-                  <CardTitle className='text-warning font-weight-bold'>
-                    Active &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </h5>
+                    <h4>
+                      <CardText className='text-warning  font-weight-bold'>
+                        {numberWithCommas(this.state.World.active)}
+                      </CardText>
+                    </h4>
+                  </Card>
+                </Col>
+                <Col xs='12' sm='6' md='6' lg='3'>
+                  <Card
+                    body
+                    outline
+                    color='success'
+                    className=' shadow m-3 bg-dark rounded'
+                  >
+                    <h5>
+                      <CardTitle className='text-success font-weight-bold'>
+                        Recovered &nbsp;&nbsp;&nbsp;&nbsp;
                   </CardTitle>
-
-                  <h4>
-                    <CardText className='text-warning  font-weight-bold'>
-                      {numberWithCommas(this.state.World.active)}
-                    </CardText>
-                  </h4>
-                </Card>
-              </Col>
-              <Col xs='12' sm='6' md='6' lg='3'>
-                <Card
-                  body
-                  outline
-                  color='success'
-                  className=' shadow m-3 bg-white rounded'
-                >
-                  <CardTitle className='text-success font-weight-bold'>
-                    Recovered &nbsp;&nbsp;&nbsp;&nbsp;
-                  </CardTitle>
-
-                  <h4>
-                    <CardText className='text-success float-left font-weight-bold'>
-                      {numberWithCommas(this.state.World.recovered)}
-                    </CardText>
-                  </h4>
-                </Card>
-              </Col>
-              <Col xs='12' sm='6' md='6' lg='3'>
-                <Card
-                  body
-                  outline
-                  color='danger'
-                  className=' shadow m-3 bg-white rounded'
-                >
-                  <CardTitle className='text-danger font-weight-bold'>
-                    Deaths &nbsp;&nbsp;&nbsp;
+                    </h5>
+                    <h4>
+                      <CardText className='text-success float-left font-weight-bold'>
+                        {numberWithCommas(this.state.World.recovered)}
+                      </CardText>
+                    </h4>
+                  </Card>
+                </Col>
+                <Col xs='12' sm='6' md='6' lg='3'>
+                  <Card
+                    body
+                    outline
+                    color='danger'
+                    className=' shadow m-3 bg-dark rounded'
+                  >
+                    <h5>
+                      <CardTitle className='text-danger font-weight-bold'>
+                        Deaths &nbsp;&nbsp;&nbsp;
                     <Badge pill color='danger'>
-                      &#8593; {numberWithCommas(this.state.World.todayDeaths)}
-                    </Badge>
-                  </CardTitle>
-                  <h4>
-                    <CardText className='text-danger font-weight-bold'>
-                      {numberWithCommas(this.state.World.deaths)}
-                    </CardText>
-                  </h4>
-                </Card>
-              </Col>
-            </Row>
-            <h5 className='d-flex justify-content-center'>
-              Country
+                          &#8593; {numberWithCommas(this.state.World.todayDeaths)}
+                        </Badge>
+                      </CardTitle>
+                    </h5>
+                    <h4>
+                      <CardText className='text-danger font-weight-bold'>
+                        {numberWithCommas(this.state.World.deaths)}
+                      </CardText>
+                    </h4>
+                  </Card>
+                </Col>
+              </Row>
+              <h5 className='d-flex justify-content-center'>
+                Country
               <span style={{ marginLeft: '10px' }}>
-                ({new Date(this.state.World.updated).toLocaleString()}
-              </span>
+                  ({new Date(this.state.World.updated).toLocaleString()}
+                </span>
               )
             </h5>
-            <AllCountry CountryData={this.state.CountryData} />
-          </div>
-        )}
+              <AllCountry CountryData={this.state.CountryData} />
+            </div>
+          )}
       </Container>
     );
   }

@@ -60,7 +60,7 @@ class TableContaint extends Component {
   }
 
   size = window.innerWidth <= 769 ? 'sm' : 'lg';
-  style = window.innerWidth <= 769 ? { width: '90%', left: '3%' } : { width: '75%' };
+  style = window.innerWidth <= 769 ? { width: '80%', left: '8%' } : { width: '75%' };
 
 
   render() {

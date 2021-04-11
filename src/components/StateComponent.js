@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, Badge, Progress, Row, Col } from 'reactstrap';
-import Table from './TableComponent';
+import DistrictData from './DistrictComponent';
 import { numberWithCommas } from '../utils/CommonFunction';
 
 class States extends Component {
@@ -32,6 +32,7 @@ class States extends Component {
   render() {
     const card = this.props.total.statewise.map((state, index) => {
       if (state.state !== 'Total') {
+        const confirmPercent = state.confirmed !== '0' ? 100 : 0;
         const activePercent = (state.active / state.confirmed) * 100;
         const recoveredPercent = (state.recovered / state.confirmed) * 100;
         const deathsPercent = (state.deaths / state.confirmed) * 100;
@@ -55,57 +56,22 @@ class States extends Component {
                 </h4>
               </CardTitle>
               <div>
-                <div className='text-center text-white font-weight-bold'>
-                  confirmed : {numberWithCommas(state.confirmed)}
-                </div>
-                <Progress
-                  style={{ height: '22px', backgroundColor: 'grey' }}
-                  value={state.confirmed !== '0' ? 100 : 0}
-                >
-                  100%
-                </Progress>
-                <div className='text-center text-white font-weight-bold'>
-                  Recovered : {numberWithCommas(state.recovered)}
-                </div>
-                <Progress
-                  style={{ height: '22px', backgroundColor: 'grey' }}
-                  color='success'
-                  value={recoveredPercent ? recoveredPercent : 0}
-                >
-                  {recoveredPercent ? recoveredPercent.toFixed(1) : 0}%
-                </Progress>
-                <div className='text-center text-white font-weight-bold'>
-                  Active : {numberWithCommas(state.active)}
-                </div>
-                <Progress
-                  style={{ height: '22px', backgroundColor: 'grey' }}
-                  color='warning'
-                  value={activePercent ? activePercent : 0}
-                >
-                  {activePercent ? activePercent.toFixed(1) : 0}%
-                </Progress>
-                <div className='text-center text-white font-weight-bold'>
-                  Deaths : {numberWithCommas(state.deaths)}
-                </div>
-                <Progress
-                  style={{ height: '22px', backgroundColor: 'grey' }}
-                  color='danger'
-                  value={deathsPercent ? deathsPercent : 0}
-                >
-                  {deathsPercent ? deathsPercent.toFixed(1) : 0}%
-                </Progress>
-                <p className='text-white mt-2'>*This card is clickable</p>
+                {this.ProgressBar("Confirmed ", state.confirmed, confirmPercent, '')}
+                {this.ProgressBar("Recovered", state.recovered, recoveredPercent, 'success')}
+                {this.ProgressBar("Active", state.active, activePercent, 'warning')}
+                {this.ProgressBar("Deaths", state.deaths, deathsPercent, 'danger')}
+                <p className='text-white mt-2'>*Click the card to see district data</p>
               </div>
             </Card>
             {this.state.stateindex === index ? (
-              <Table
+              <DistrictData
                 stateDistrict={this.state.stateData}
                 modal={this.state.modal}
                 toggle={() => this.toggle}
               />
             ) : (
-                <div></div>
-              )}
+              <div></div>
+            )}
           </Col>
         );
       } else {
@@ -113,6 +79,21 @@ class States extends Component {
       }
     });
     return <Row>{card}</Row>;
+  }
+
+  ProgressBar(name, data, percentage, color) {
+    return <>
+      <div className='text-center text-white font-weight-bold'>
+        {name}: {numberWithCommas(data)}
+      </div>
+      <Progress
+        style={{ height: '22px', backgroundColor: 'grey' }}
+        color={color}
+        value={percentage ? percentage : 0}
+      >
+        {percentage ? percentage.toFixed(1) : 0} %
+      </Progress>
+    </>
   }
 }
 export default States;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Badge } from 'reactstrap';
+import { Table, Badge, Row, Col } from 'reactstrap';
 import { numberWithCommas } from '../utils/CommonFunction';
 
 const AllCountry = ({ CountryData }) => {
@@ -21,48 +21,53 @@ const AllCountry = ({ CountryData }) => {
     );
   });
   return (
-    <Table className='table' responsive size='sm'>
-      <thead>
-        <tr>
-          <th style={{ width: '20%' }}>
-            {window.innerWidth <= 769
-              ? window.innerWidth <= 576
-                ? 'CN'
-                : 'CONTRY'
-              : 'Country Name'}
-          </th>
-          <th style={{ width: '20%' }}>
-            {window.innerWidth <= 769
-              ? window.innerWidth <= 576
-                ? 'Cfd'
-                : 'Cnfmd'
-              : 'Confirmed'}
-          </th>
-          <th style={{ width: '20%' }}>
-            {window.innerWidth <= 769
-              ? window.innerWidth <= 576
-                ? 'AT'
-                : 'ATV'
-              : 'Active'}
-          </th>
-          <th style={{ width: '20%' }}>
-            {window.innerWidth <= 769
-              ? window.innerWidth <= 576
-                ? 'RCD'
-                : 'RECVD'
-              : 'Recovered'}
-          </th>
-          <th style={{ width: '20%' }}>
-            {window.innerWidth <= 769
-              ? window.innerWidth <= 576
-                ? 'D'
-                : 'DTH'
-              : 'Deaths'}
-          </th>
-        </tr>
-      </thead>
-      <tbody>{rows}</tbody>
-    </Table>
+    <Row>
+      {/* <Col xs='12' md='6'></Col> */}
+      <Col xs='12' md='6'>
+        <Table className='table' responsive size='sm'>
+          <thead>
+            <tr>
+              <th style={{ width: '20%' }}>
+                {window.innerWidth <= 769
+                  ? window.innerWidth <= 576
+                    ? 'CN'
+                    : 'CONTRY'
+                  : 'Country Name'}
+              </th>
+              <th style={{ width: '20%' }}>
+                {window.innerWidth <= 769
+                  ? window.innerWidth <= 576
+                    ? 'Cfd'
+                    : 'Cnfmd'
+                  : 'Confirmed'}
+              </th>
+              <th style={{ width: '20%' }}>
+                {window.innerWidth <= 769
+                  ? window.innerWidth <= 576
+                    ? 'AT'
+                    : 'ATV'
+                  : 'Active'}
+              </th>
+              <th style={{ width: '20%' }}>
+                {window.innerWidth <= 769
+                  ? window.innerWidth <= 576
+                    ? 'RCD'
+                    : 'RECVD'
+                  : 'Recovered'}
+              </th>
+              <th style={{ width: '20%' }}>
+                {window.innerWidth <= 769
+                  ? window.innerWidth <= 576
+                    ? 'D'
+                    : 'DTH'
+                  : 'Deaths'}
+              </th>
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </Table>
+      </Col>
+    </Row>
   );
 };
 

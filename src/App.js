@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import {
-  BrowserRouter,
   Switch,
   Route,
   Redirect,
@@ -14,10 +13,10 @@ import Footer from './components/Footer';
 import World from './components/World';
 
 function App() {
-  useEffect(() => {
-    ReactGA.initialize('UA-163580653-1');
-    ReactGA.pageview(window.location.pathname);
-  }, []);
+  // useEffect(() => {
+  //   ReactGA.initialize('UA-163580653-1');
+  //   ReactGA.pageview(window.location.pathname);
+  // }, []);
 
   const country = () => {
     return <Country />;

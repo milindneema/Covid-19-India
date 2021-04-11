@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import {
-  Card,
-  CardTitle,
-  CardText,
-  Badge,
   Container,
   Row,
   Col,
@@ -12,7 +8,7 @@ import {
 } from 'reactstrap';
 import AllCountry from './AllCountry';
 import { Link } from 'react-router-dom';
-import { numberWithCommas } from '../utils/CommonFunction';
+import { Summary } from '../utils/Summary_component';
 
 class World extends Component {
   constructor(props) {
@@ -32,10 +28,11 @@ class World extends Component {
     );
     const data = await response.json();
     const countries = await response2.json();
-    console.log(data);
+    // console.log(data);
     this.setState({ World: data, CountryData: countries, loading: false });
   }
   render() {
+
     return (
       <Container fluid={true} className='m-2 mb-5 justify-content-center'>
         {this.state.loading ? (
@@ -46,125 +43,46 @@ class World extends Component {
             />
           </div>
         ) : (
-            <div>
-              <Row className='d-flex justify-content-center'>
-                <Col className='col-5 col-md-4 offset-md-2'>
-                  <Link to='/'>
-                    <Button
-                      outline
-                      color='primary'
-                      style={{ padding: '.4em 2.5em' }}
-                    >
-                      India
-                  </Button>
-                  </Link>
-                </Col>
-                <Col className='col-5 col-md-4 offset-md-2'>
-                  <Link to='/world'>
-                    <Button
-                      outline
-                      color='primary'
-                      style={{ padding: '.4em 2.5em' }}
-                    >
-                      World
-                  </Button>
-                  </Link>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs='12' sm='6' md='6' lg='3'>
-                  <Card
-                    body
+          <div>
+            <Row className='d-flex justify-content-center'>
+              <Col className='col-5 col-md-4 offset-md-2'>
+                <Link to='/'>
+                  <Button
                     outline
                     color='primary'
-                    className=' shadow m-3 bg-dark rounded'
+                    style={{ padding: '.4em 2.5em' }}
                   >
-                    <h5>
-                      <CardTitle className='text-primary font-weight-bold'>
-                        Confirmed &nbsp;&nbsp;&nbsp;
-                    <Badge pill color='primary'>
-                          &#8593; {numberWithCommas(this.state.World.todayCases)}
-                        </Badge>
-                      </CardTitle>
-                    </h5>
-                    <h4>
-                      <CardText className='text-primary float-left font-weight-bold'>
-                        {numberWithCommas(this.state.World.cases)}
-                      </CardText>
-                    </h4>
-                  </Card>
-                </Col>
-                <Col xs='12' sm='6' md='6' lg='3'>
-                  <Card
-                    body
-                    outline
-                    color='warning'
-                    className=' shadow m-3 bg-dark rounded'
+                    India
+                  </Button>
+                </Link>
+              </Col>
+              <Col className='col-5 col-md-4 offset-md-2'>
+                <Link to='/world'>
+                  <Button
+                    color='primary'
+                    style={{ padding: '.4em 2.5em' }}
                   >
-                    <h5>
-                      <CardTitle className='text-warning font-weight-bold'>
-                        Active &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  </CardTitle>
-                    </h5>
-                    <h4>
-                      <CardText className='text-warning  font-weight-bold'>
-                        {numberWithCommas(this.state.World.active)}
-                      </CardText>
-                    </h4>
-                  </Card>
-                </Col>
-                <Col xs='12' sm='6' md='6' lg='3'>
-                  <Card
-                    body
-                    outline
-                    color='success'
-                    className=' shadow m-3 bg-dark rounded'
-                  >
-                    <h5>
-                      <CardTitle className='text-success font-weight-bold'>
-                        Recovered &nbsp;&nbsp;&nbsp;&nbsp;
-                  </CardTitle>
-                    </h5>
-                    <h4>
-                      <CardText className='text-success float-left font-weight-bold'>
-                        {numberWithCommas(this.state.World.recovered)}
-                      </CardText>
-                    </h4>
-                  </Card>
-                </Col>
-                <Col xs='12' sm='6' md='6' lg='3'>
-                  <Card
-                    body
-                    outline
-                    color='danger'
-                    className=' shadow m-3 bg-dark rounded'
-                  >
-                    <h5>
-                      <CardTitle className='text-danger font-weight-bold'>
-                        Deaths &nbsp;&nbsp;&nbsp;
-                    <Badge pill color='danger'>
-                          &#8593; {numberWithCommas(this.state.World.todayDeaths)}
-                        </Badge>
-                      </CardTitle>
-                    </h5>
-                    <h4>
-                      <CardText className='text-danger font-weight-bold'>
-                        {numberWithCommas(this.state.World.deaths)}
-                      </CardText>
-                    </h4>
-                  </Card>
-                </Col>
-              </Row>
-              <h5 className='d-flex justify-content-center'>
-                Country
+                    World
+                  </Button>
+                </Link>
+              </Col>
+            </Row>
+            <Row>
+              {Summary("Confirmed", this.state.World.todayCases, this.state.World.cases, "primary", "text-primary")}
+              {Summary("Active", null, this.state.World.active, "warning", "text-warning")}
+              {Summary("Recovered", null, this.state.World.recovered, "success", "text-success")}
+              {Summary("Deaths", this.state.World.todayDeaths, this.state.World.deaths, "danger", "text-danger")}
+            </Row>
+            <h5 className='d-flex justify-content-center text-white'>
+              Country
               <span style={{ marginLeft: '10px' }}>
-                  ({new Date(this.state.World.updated).toLocaleString()}
-                </span>
+                ({new Date(this.state.World.updated).toLocaleString()}
+              </span>
               )
             </h5>
-              <AllCountry CountryData={this.state.CountryData} />
-            </div>
-          )}
+            <AllCountry CountryData={this.state.CountryData} />
+          </div>
+        )}
       </Container>
     );
   }

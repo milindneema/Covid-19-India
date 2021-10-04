@@ -27,41 +27,11 @@ const AllCountry = ({ CountryData }) => {
         <Table className='table' responsive size='sm'>
           <thead>
             <tr>
-              <th style={{ width: '20%' }}>
-                {window.innerWidth <= 769
-                  ? window.innerWidth <= 576
-                    ? 'CN'
-                    : 'CONTRY'
-                  : 'Country Name'}
-              </th>
-              <th style={{ width: '20%' }}>
-                {window.innerWidth <= 769
-                  ? window.innerWidth <= 576
-                    ? 'Cfd'
-                    : 'Cnfmd'
-                  : 'Confirmed'}
-              </th>
-              <th style={{ width: '20%' }}>
-                {window.innerWidth <= 769
-                  ? window.innerWidth <= 576
-                    ? 'AT'
-                    : 'ATV'
-                  : 'Active'}
-              </th>
-              <th style={{ width: '20%' }}>
-                {window.innerWidth <= 769
-                  ? window.innerWidth <= 576
-                    ? 'RCD'
-                    : 'RECVD'
-                  : 'Recovered'}
-              </th>
-              <th style={{ width: '20%' }}>
-                {window.innerWidth <= 769
-                  ? window.innerWidth <= 576
-                    ? 'D'
-                    : 'DTH'
-                  : 'Deaths'}
-              </th>
+              {tableHead('CN', 'CONTRY', 'Country Name')}
+              {tableHead('Cfd', 'Cnfmd', 'Confirmed')}
+              {tableHead('AT', 'ATV', 'Active')}
+              {tableHead('RCD', 'RECVD', 'Recovered')}
+              {tableHead('D', 'DTH', 'Deaths')}
             </tr>
           </thead>
           <tbody>{rows}</tbody>
@@ -70,5 +40,15 @@ const AllCountry = ({ CountryData }) => {
     </Row>
   );
 };
+
+function tableHead(short, mid, long) {
+  return <th style={{ width: '20%' }}>
+    {window.innerWidth <= 769
+      ? window.innerWidth <= 576
+        ? short
+        : mid
+      : long}
+  </th>;
+}
 
 export default AllCountry;

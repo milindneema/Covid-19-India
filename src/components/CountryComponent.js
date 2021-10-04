@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import {
-  Row,
-  Col,
-  Spinner,
-  Button,
-  Container,
-} from 'reactstrap';
+import { Row, Col, Spinner, Button, Container } from 'reactstrap';
 import States from './StateComponent';
 import { Link } from 'react-router-dom';
-import { Summary } from '../utils/Summary_component'
+import { Summary } from '../utils/Summary_component';
+// import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar } from 'recharts';
 
 class Country extends Component {
   constructor(props) {
@@ -18,16 +13,22 @@ class Country extends Component {
       loading: true,
       total: null,
       states: null,
+      timeSerise: null
     };
   }
 
   async componentDidMount() {
-    const response = await fetch('https://api.covid19india.org/data.json');
+    const response = await fetch('https://data.covid19india.org/data.json');
     const data = await response.json();
-    this.setState({ total: data.statewise[0], states: data, loading: false });
+    console.log(data);
+    const length = data.cases_time_series.length
+    const serise = data.cases_time_series.slice(length - 30, length)
+    // console.log(serise);
+    this.setState({ total: data.statewise[0], timeSerise: serise, states: data, loading: false });
+
   }
   render() {
-    // console.log(window.location.pathname)
+    // console.log(this.state.timeSerise)
     return (
       <Container fluid={true} className='m-2 mb-5 justify-content-center'>
         {this.state.loading ? (
@@ -54,16 +55,14 @@ class Country extends Component {
                   </Button>
                 </Link>
               </Col>
-
             </Row>
 
             <Row>
               {Summary("Confirmed", this.state.total.deltaconfirmed, this.state.total.confirmed, "primary", "text-primary")}
-              {Summary("Active", this.state.total.deltarecovered, this.state.total.active, "info", "text-info")}
+              {Summary("Active", null, this.state.total.active, "info", "text-info")}
               {Summary("Recovered", this.state.total.deltarecovered, this.state.total.recovered, "success", "text-success")}
               {Summary("Deaths", this.state.total.deltadeaths, this.state.total.deaths, "danger", "text-danger")}
             </Row>
-
             <h2 className='d-flex justify-content-center text-white'>
               States
               <span style={{ marginLeft: '10px' }}>

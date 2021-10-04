@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Container,
-  Row,
-  Col,
-  Spinner,
-  Button,
-} from 'reactstrap';
+import { Container, Row, Col, Spinner, Button, } from 'reactstrap';
 import AllCountry from './AllCountry';
 import { Link } from 'react-router-dom';
 import { Summary } from '../utils/Summary_component';
@@ -37,31 +31,21 @@ class World extends Component {
       <Container fluid={true} className='m-2 mb-5 justify-content-center'>
         {this.state.loading ? (
           <div className='d-flex justify-content-center'>
-            <Spinner
-              color='primary'
-              style={{ width: '5rem', height: '5rem' }}
-            />
+            <Spinner color='primary' style={{ width: '5rem', height: '5rem' }} />
           </div>
         ) : (
           <div>
             <Row className='d-flex justify-content-center'>
               <Col className='col-5 col-md-4 offset-md-2'>
                 <Link to='/'>
-                  <Button
-                    outline
-                    color='primary'
-                    style={{ padding: '.4em 2.5em' }}
-                  >
+                  <Button outline color='primary' style={{ padding: '.4em 2.5em' }}>
                     India
                   </Button>
                 </Link>
               </Col>
               <Col className='col-5 col-md-4 offset-md-2'>
                 <Link to='/world'>
-                  <Button
-                    color='primary'
-                    style={{ padding: '.4em 2.5em' }}
-                  >
+                  <Button color='primary' style={{ padding: '.4em 2.5em' }} >
                     World
                   </Button>
                 </Link>
